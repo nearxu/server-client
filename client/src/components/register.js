@@ -24,6 +24,10 @@ export default class Register extends Component {
       })
       .then(res => {
         console.log(res.data);
+        if (res.data.code === 200) {
+          console.log(this.props, "props");
+          this.props.history.replace("/login");
+        }
       })
       .catch(err => {
         console.log(err);
@@ -35,14 +39,17 @@ export default class Register extends Component {
         <h1>注册</h1>
         <label>
           <span>username</span>
-          <input placeholder="name" onChange={e => this.changeValue("name")} />
+          <input
+            placeholder="name"
+            onChange={e => this.changeValue(e, "name")}
+          />
         </label>
         <hr />
         <label>
           <span>password</span>
           <input
             placeholder="password"
-            onChange={e => this.changeValue("pwd")}
+            onChange={e => this.changeValue(e, "pwd")}
           />
         </label>
         <hr />
