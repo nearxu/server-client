@@ -18,7 +18,7 @@ export default class Register extends Component {
   }
   submit() {
     axios
-      .post("http://localhost:8000/register", {
+      .post("register", {
         name: this.state.name,
         pwd: this.state.pwd
       })

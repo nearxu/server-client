@@ -17,7 +17,7 @@ export default class Login extends Component {
   }
   submit() {
     axios
-      .post("http://localhost:8000/login", {
+      .post("/login", {
         name: this.state.name,
         pwd: this.state.pwd
       })

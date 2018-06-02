@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Index from "./components/index";
 import Login from "./components/login";
 import Register from "./components/register";
+import Detail from "./components/detail";
 
 const Topic = ({ match }) => (
   <div>
@@ -61,6 +62,7 @@ const App = () => {
         <Route path="/topics" component={Topics} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/detail:id" component={Detail} />
       </div>
     </Router>
   );

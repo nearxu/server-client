@@ -4,6 +4,13 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var BearSchema = new Schema({
-  name: String
+  content: {
+    type: String,
+    require: true
+  },
+  date: {
+    type: String,
+    require: true
+  }
 });
 module.exports = mongoose.model("Bear", BearSchema);
