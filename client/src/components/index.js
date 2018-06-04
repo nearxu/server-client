@@ -88,7 +88,7 @@ export default class Index extends Component {
                 <div key={index}>
                   <span>{data.content}</span>
                   <button onClick={this.delete.bind(this, data)}> 删除 </button>
-                  <Link to={`/detail:${data.date}`}> 修改</Link>
+                  <Link to={`/detail/${data.date}`}> 修改</Link>
                 </div>
               );
             })}

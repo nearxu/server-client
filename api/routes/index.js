@@ -12,7 +12,7 @@ router.get("/", function(req, res, next) {
 // detail
 router.post("/detail", (req, res, next) => {
   let date = req.body.date;
-  Bear.findOne({ date }, function(err, doc) {
+  Bear.findOne({ date: date }, function(err, doc) {
     if (err) {
       res.json({
         code: 400,
@@ -25,19 +25,27 @@ router.post("/detail", (req, res, next) => {
 });
 
 // update
+/*
+Model.update(conditions, doc, [options], [callback])
+conditions：查询条件；doc：需要修改的数据，不能修改主键（_id）；options：控制选项；
+callback：回调函数，返回的是受影响的行数。
+multi (boolean)： 默认为false。是否更新多个查询记录。
+*/
 router.post("/update", (req, res, next) => {
   let content = req.body.content;
   let date = req.body.date;
-  Bear.findOne({ date }, function(err, doc) {
-    if (err) {
-      res.json({
-        code: 400,
-        result: ""
-      });
-    } else {
-      res.json(doc);
+  Bear.update(
+    { date: date },
+    { content: content },
+    { multi: true },
+    (err, docs) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json({ code: 200, msg: "更新成功" });
+      }
     }
-  });
+  );
 });
 
 // 添加一个

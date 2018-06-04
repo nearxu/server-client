@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter, Router, Route, Link, Switch } from "react-router-dom";
 
 import Index from "./components/index";
 import Login from "./components/login";
@@ -41,7 +41,7 @@ const Topics = ({ match }) => {
 
 const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <div>
         <ul>
           <li>
@@ -58,13 +58,15 @@ const App = () => {
           </li>
         </ul>
         <hr />
-        <Route exact path="/index" component={Index} />
-        <Route path="/topics" component={Topics} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="/detail:id" component={Detail} />
+        <Switch>
+          <Route exact path="/index" component={Index} />
+          <Route path="/topics" component={Topics} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/detail/:id" component={Detail} />
+        </Switch>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 };
 
