@@ -47,7 +47,7 @@ class Detail extends Component {
         .then(res => {
           if (res.data.code === 200) {
             console.log(this.props, "props");
-            this.props.router.replace("/index");
+            this.props.history.replace("/index");
           }
         })
         .catch(err => {
