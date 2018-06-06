@@ -90,6 +90,22 @@ router.post("/delete", (req, res, next) => {
   });
 });
 
+router.post("/lists", (req, res, next) => {
+  let pageSize = req.body.pageSize;
+  let pageIndex = req.body.pageIndex;
+  Bear.find({})
+    .skip(pageSize * (pageIndex - 1))
+    .limit(pageSize)
+    .sort({ date: -1 })
+    .exec((err, todolist) => {
+      if (err) {
+        res.json({ code: 404, result: "fail" });
+      } else {
+        res.json(todolist);
+      }
+    });
+});
+
 // 获取列表
 router.post("/bearList", (req, res, next) => {
   Bear.find({})

@@ -38,6 +38,7 @@ export default class Index extends Component {
           console.log(res.data, "data");
           this.setState({ list: res.data }, () => {
             this.value.value = "";
+            this.state.list = [];
           });
         })
         .catch(err => {

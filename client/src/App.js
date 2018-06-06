@@ -6,6 +6,7 @@ import Index from "./components/index";
 import Login from "./components/login";
 import Register from "./components/register";
 import Detail from "./components/detail";
+import Page from "./components/page";
 
 const Topic = ({ match }) => (
   <div>
@@ -56,6 +57,9 @@ const App = () => {
           <li>
             <Link to="/register">register</Link>
           </li>
+          <li>
+            <Link to="/pages">pages</Link>
+          </li>
         </ul>
         <hr />
         <Switch>
@@ -64,6 +68,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/detail/:id" component={Detail} />
+          <Route path="/pages" component={Page} />
         </Switch>
       </div>
     </BrowserRouter>
