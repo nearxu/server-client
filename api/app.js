@@ -5,7 +5,8 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/lists");
+// mongoose.connect("mongodb://localhost:27017/lists");
+mongoose.connect("mongodb://localhost:27017/sumCnode");
 
 mongoose.connection.on("connected", function(arg) {
   console.log("数据库链接成功");
@@ -15,9 +16,10 @@ mongoose.connection.on("error", function(arg) {
   console.log("数据库链接失败");
 });
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-
+// var indexRouter = require("./routes/index");
+// var usersRouter = require("./routes/users");
+// var indexRouter = require("./routes/poem");
+var cnode = require("./routes/cnode");
 var app = express();
 
 //设置跨域访问
@@ -43,8 +45,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+// app.use("/", indexRouter);
+// app.use("/users", usersRouter);
+app.use("/cnode", cnode);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
